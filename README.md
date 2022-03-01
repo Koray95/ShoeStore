@@ -16,6 +16,10 @@
 ```
 /ApplicationCore
 Install-Package Ardalis.Specification -v 5.2.0
+
+/Infrastructure
+Install-package Microsoft.EntityFrameworkCore -v 5.0.14
+Install-package Npgsql.EntityFrameworkCore.PostgreSQL -v 5.0.10
 ```
 
 ### Resources
