@@ -12,6 +12,13 @@
 
 ```
 
+### Migrations
+```
+/Infrastructure
+Add-Migration InitialCreate -Context StoreContext -OutputDir "Data\Migrations"
+Update-Database -Context StoreContext
+```
+
 ### Packages
 ```
 /ApplicationCore
@@ -27,3 +34,4 @@ Install-Package Ardalis.Specification.EntityFrameworkCore -v 5.2.0
 
 * https://github.com/yigith/TechMarket
 * https://github.com/dotnet-architecture/eShopOnWeb
+* https://www.connectionstrings.com/postgresql/
