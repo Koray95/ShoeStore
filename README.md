@@ -5,7 +5,7 @@
 /src
 * ApplicationCore
 * Infrastructure
-*Web
+* Web
 
 /tests
 * UnitTests
@@ -18,8 +18,9 @@
 Install-Package Ardalis.Specification -v 5.2.0
 
 /Infrastructure
-Install-package Microsoft.EntityFrameworkCore -v 5.0.14
-Install-package Npgsql.EntityFrameworkCore.PostgreSQL -v 5.0.10
+Install-Package Microsoft.EntityFrameworkCore -v 5.0.14
+Install-Package Npgsql.EntityFrameworkCore.PostgreSQL -v 5.0.10
+Install-Package Ardalis.Specification.EntityFrameworkCore -v 5.2.0
 ```
 
 ### Resources
