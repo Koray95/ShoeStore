@@ -7,14 +7,14 @@
 
 <div class="card mb-3 bg-light">
     <div class="card-body">
-        <form class="row row-cols-lg-auto g-3 align-items-center">
+        <form class="row row-cols-sm-auto g-3 align-items-center">
             <div class="col-12">
                 <label>Category</label>
             </div>
 
             <div class="col-12">
                 <select class="form-select" asp-items="Model.Categories" asp-for="CategoryId">
-                    <option valıe="">All</option>
+                    <option value="">All</option>
                 </select>
             </div>
 
@@ -22,9 +22,9 @@
                 <label>Brand</label>
             </div>
 
-              <div class="col-12">
+            <div class="col-12">
                 <select class="form-select" asp-items="Model.Brands" asp-for="BrandId">
-                    <option valıe="">All</option>
+                    <option value="">All</option>
                 </select>
             </div>
 
@@ -39,8 +39,8 @@
 <div class="row">
     @foreach (var item in Model.Products)
     {
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="card mb-3">
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+            <div class="card ">
                 <img src="~/img/products/@item.PictureUri" alt="Product Image" class="w-100" />
 
                 <div class="card-body">
@@ -52,3 +52,40 @@
         </div>
     }
 </div>
+
+@{
+    var pi = Model.PaginationInfo;
+}
+
+<p class="text-center">
+    Showing @pi.Start - @pi.End of @pi.TotalItems items
+</p>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item @(pi.HasPrevious ? "" : "disabled")">
+            <a class="page-link" asp-route-p="@(pi.CurrentPage - 1)" asp-route-CategoryId="@Model.CategoryId" asp-route-BrandId="@Model.BrandId">Previous</a>
+        </li>
+
+        @foreach (int i in pi.PageNumbers)
+        {
+            if (i == -1)
+            {
+                <li class="page-item disabled">
+                    <a class="page-link">&hellip;</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item @(i == pi.CurrentPage ? "active" : "")">
+                    <a class="page-link" asp-route-p="@i" asp-route-CategoryId="@Model.CategoryId" asp-route-BrandId="@Model.BrandId">@i</a>
+                </li>
+            }
+        }
+
+        <li class="page-item @(pi.HasPrevious ? "" : "disabled")">
+            <a class="page-link" asp-route-p="@(pi.CurrentPage - 1)" asp-route-CategoryId="@Model.CategoryId" asp-route-BrandId="@Model.BrandId">Next</a>
+        </li>
+    </ul>
+</nav>
+

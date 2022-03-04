@@ -8,15 +8,19 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Specifications
 {
-    public class HomeFilterSpecification : Specification<Product>
+    public class ProductsHomeFilterSpecification : Specification<Product>
     {
-        public HomeFilterSpecification(int? categoryId, int? brandId)
+        public ProductsHomeFilterSpecification(int? categoryId, int? brandId)
         {
             if (categoryId.HasValue)
                 Query.Where(x => x.CategoryId == categoryId);
             
             if (brandId.HasValue)
                 Query.Where(x=>x.BrandId == brandId);
+        }
+        public ProductsHomeFilterSpecification(int? categoryId, int? brandId, int skip, int take) : this(categoryId,brandId)
+        {  
+            Query.Skip(skip).Take(take);
         }
     }
 }
